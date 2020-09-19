@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<title>Registrado de Pedidos</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="jumbotron jumbotron-fluid">
+					<div class="container">
+						<h1 class="display-4  text-center">CONTACT CENTER</h1>
+						<p class="lead">“Tu objetivo como empresa no es tener solamente el mejor servicio al cliente,
+							sino que sea legendario”.</p>
+					</div>
+				</div>
+			</div>
+			<div class=col-md-12>
+
+				<div class="card text-center">
+					<div class="card-header">
+						Listado de pedidos pendientes de confirmacion
+					</div>
+					<div class="card-body">
+						<table class="table table-bordered table-condensed table-hover">
+							<thead>
+								<tr>
+									<td>Nro Orden</td>
+									<th>Fecha</th>
+									<th>Nombre/Razón Social</th>
+									<th>Teléfono</th>
+								</tr>
+							</thead>
+							<tbody id="tblPedidos" class="cursor">
+							</tbody>
+						</table>
+					</div>
+					<div class="card-footer text-muted">
+						<div class="pagenumbers" id="pagination"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script src="js/main.js" type="module"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

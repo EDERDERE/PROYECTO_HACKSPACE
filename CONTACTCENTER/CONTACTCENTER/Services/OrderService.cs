@@ -13,10 +13,12 @@ namespace CONTACTCENTER.Services
 
     public interface  IOrderService {
 
+
+        //(declarado
         Task<IEnumerable<OrderListDTO>> GetOrderList();
     }
 
-    public class OrderService : IOrderService
+    public class OrderService : IOrderService // impl
     {
         private readonly NorthwindContext _context;
 
@@ -41,7 +43,7 @@ namespace CONTACTCENTER.Services
                                    select new OrderListDTO
                                    {
                                        OrderID = _Orders.OrderId,
-                                       OrderDate =_Orders.OrderDate,
+                                       OrderDate =Convert.ToDateTime(_Orders.OrderDate),
                                        ContactName = _Customers.ContactName,
                                        Phone = _Customers.Phone
                                    }).ToListAsync();

@@ -1,4 +1,7 @@
 ﻿
+using CONTACTCENTER.Util;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,22 +13,11 @@ namespace CONTACTCENTER.DTOs
 {
     public class OrderListDTO
     {
-
         [StringLength(5)]
         public int OrderID { get; set; }
-
         [StringLength(30)]
-        public string ContactName { get; set; }
-
-        [Column(TypeName = "datetime")]
-        public DateTime? OrderDate { get; set; }
-
-        public string Phone { get; set; }
-
-
-
-        // metodo para listar pedidos pendientes por confirmar.
-
-
+        public string ContactName { get; set; }    
+        public DateTime OrderDate { get; set; }
+        public string Phone { get; set; }   
     }
 }

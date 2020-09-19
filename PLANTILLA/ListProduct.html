@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+	<title>Confirmarcion de Pedidos</title>
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class=col-md-12>
+				<div id="registro"></div>
+				<legend>Confirmación de Pedidos </legend>
+				<table class="table table-bordered table-condensed table-hover">
+					<thead>
+						<tr>
+							<td>Código</td>
+							<th>Descripción</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody id="tblDetalleProductos" class="cursor">
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<form>
+			<div class="form-row">
+
+				<div class="col-sm-5 my-1">
+					<label class="sr-only" for="inlineFormInputName"></label>
+					<input type="date" class="form-control" id="fecha" name="fecha">
+				</div>
+				<div class="col-sm-4 my-3 ">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" id="confirmado" name="confirmado">
+						<label class="form-check-label" for="autoSizingCheck2">
+							Confirmado.
+						</label>
+					</div>
+				</div>
+				<div class="col-sm-3 my-1">
+					<label class="sr-only" for="inlineFormInputGroupUsername">596.00</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text">Total</div>
+						</div>
+						<input type="text" class="form-control text-center"  id="total" name="total" placeholder="586.00">
+					</div>
+
+				</div>
+
+			</div>
+			<div class="form-group">
+				<label for="inputAddress">Comentario</label>
+				<textarea class="form-control" id="comentario" name="comentario" placeholder="Enviar el martes en la tarde."></textarea>
+			</div>
+
+			<button type="submit" class="btn btn-primary" id="btnGuardar">Guardar</button>
+		</form>
+	</div>
+	<script src="js/secondary.js" type="module"></script>
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+		crossorigin="anonymous"></script>
+</body>
+
+</html>

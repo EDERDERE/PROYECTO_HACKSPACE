@@ -21,12 +21,14 @@ namespace CONTACTCENTER.Controllers
         private readonly NorthwindContext _context;
         private readonly IOrderService _iOrderService;
         private readonly IProductService _iProductService;
+        private readonly IOrderStateService _iOrderStateService;
 
-        public OrderListController(NorthwindContext context, IOrderService iOrderService , IProductService  iProductService)
+        public OrderListController(NorthwindContext context, IOrderService iOrderService, IProductService iProductService, IOrderStateService iOrderStateService)
         {
             _context = context;
             _iOrderService = iOrderService;
             _iProductService = iProductService;
+            _iOrderStateService = iOrderStateService;
         }
 
 
@@ -34,9 +36,9 @@ namespace CONTACTCENTER.Controllers
         public async Task<IActionResult> GetOrderList()
         {
 
-           var orderList= await _iOrderService.GetOrderList();
-           return Ok(orderList);
-            }
+            var orderList = await _iOrderService.GetOrderList();
+            return Ok(orderList);
+        }
 
         // GET: api/OrderList/5
 
@@ -48,5 +50,33 @@ namespace CONTACTCENTER.Controllers
             return Ok(productDetails);
         }
 
+        [HttpPut("{id}", Name = "GuardarDatos")]
+        public async Task<ActionResult> Put([FromBody] OrderStateDTO orderState)
+        {
+            if (orderState.OrderID == 0)
+            {
+                return BadRequest();
+            }            
+
+            try
+            {
+                var queryTest = await (from _Orders in _context.Orders
+                                       where _Orders.OrderId == orderState.OrderID
+                                       select _Orders).FirstOrDefaultAsync();
+
+                queryTest.Confirmacion = orderState.Confirmacion;
+                queryTest.FechaConfirmacion = orderState.FechaConfirmacion;
+                queryTest.Comentarios = orderState.Comentarios;
+
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return NoContent();
+        }
+
+    
     }
 }

@@ -37,7 +37,12 @@ namespace CONTACTCENTER
             services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(Configuration.GetConnectionString("NorthwindContext")));
             services.AddScoped<IOrderService, OrderService>();
             services.AddScoped<IProductService, ProductService>();
-            services.AddControllers();     
+            services.AddScoped<IOrderStateService, OrderStateService>();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new Util.DateTimeConverter());
+            }
+  );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
