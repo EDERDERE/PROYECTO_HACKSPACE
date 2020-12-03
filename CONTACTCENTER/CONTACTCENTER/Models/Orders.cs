@@ -1,20 +1,12 @@
-﻿using CONTACTCENTER.Util;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
 
 namespace CONTACTCENTER.Models
 {
     public partial class Orders
     {
-        public Orders()
-        {
-            OrderDetails = new HashSet<OrderDetails>();
-        }
-
         [Key]
         [Column("OrderID")]
         public int OrderId { get; set; }
@@ -53,8 +45,5 @@ namespace CONTACTCENTER.Models
         [ForeignKey(nameof(CustomerId))]
         [InverseProperty(nameof(Customers.Orders))]
         public virtual Customers Customer { get; set; }
-      
-
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
     }
 }

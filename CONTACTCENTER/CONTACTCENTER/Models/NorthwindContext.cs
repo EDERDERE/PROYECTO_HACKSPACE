@@ -6,6 +6,9 @@ namespace CONTACTCENTER.Models
 {
     public partial class NorthwindContext : DbContext
     {
+        public NorthwindContext()
+        {
+        }
 
         public NorthwindContext(DbContextOptions<NorthwindContext> options)
             : base(options)
@@ -13,16 +16,12 @@ namespace CONTACTCENTER.Models
         }
 
         public virtual DbSet<Customers> Customers { get; set; }
-
-        public virtual DbSet<OrderDetails> OrderDetails { get; set; }
-
         public virtual DbSet<Orders> Orders { get; set; }
-
         public virtual DbSet<Products> Products { get; set; }
+  
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
             modelBuilder.Entity<Customers>(entity =>
             {
                 entity.HasIndex(e => e.City)
@@ -39,33 +38,6 @@ namespace CONTACTCENTER.Models
 
                 entity.Property(e => e.CustomerId).IsFixedLength();
             });
-
-            modelBuilder.Entity<OrderDetails>(entity =>
-            {
-                entity.HasKey(e => new { e.OrderId, e.ProductId })
-                    .HasName("PK_Order_Details");
-
-                entity.HasIndex(e => e.OrderId)
-                    .HasName("OrdersOrder_Details");
-
-                entity.HasIndex(e => e.ProductId)
-                    .HasName("ProductsOrder_Details");
-
-                entity.Property(e => e.Quantity).HasDefaultValueSql("((1))");
-
-                entity.HasOne(d => d.Order)
-                    .WithMany(p => p.OrderDetails)
-                    .HasForeignKey(d => d.OrderId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Details_Orders");
-
-                entity.HasOne(d => d.Product)
-                    .WithMany(p => p.OrderDetails)
-                    .HasForeignKey(d => d.ProductId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Order_Details_Products");
-            });
-
 
             modelBuilder.Entity<Orders>(entity =>
             {
@@ -95,9 +67,7 @@ namespace CONTACTCENTER.Models
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("FK_Orders_Customers");
-          
             });
-
 
             modelBuilder.Entity<Products>(entity =>
             {
@@ -117,11 +87,9 @@ namespace CONTACTCENTER.Models
                 entity.Property(e => e.UnitsInStock).HasDefaultValueSql("((0))");
 
                 entity.Property(e => e.UnitsOnOrder).HasDefaultValueSql("((0))");
-             
-
             });
 
-
+            OnModelCreatingPartial(modelBuilder);
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);

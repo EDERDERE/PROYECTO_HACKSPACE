@@ -9,7 +9,6 @@ namespace CONTACTCENTER.Models
     {
         public Customers()
         {
-          
             Orders = new HashSet<Orders>();
         }
 

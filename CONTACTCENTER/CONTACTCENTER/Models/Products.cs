@@ -7,11 +7,6 @@ namespace CONTACTCENTER.Models
 {
     public partial class Products
     {
-        public Products()
-        {
-            OrderDetails = new HashSet<OrderDetails>();
-        }
-
         [Key]
         [Column("ProductID")]
         public int ProductId { get; set; }
@@ -30,8 +25,8 @@ namespace CONTACTCENTER.Models
         public short? UnitsOnOrder { get; set; }
         public short? ReorderLevel { get; set; }
         public bool Discontinued { get; set; }
-
-
-        public virtual ICollection<OrderDetails> OrderDetails { get; set; }
+        [Column("comentarios")]
+        [StringLength(200)]
+        public string Comentarios { get; set; }
     }
 }
